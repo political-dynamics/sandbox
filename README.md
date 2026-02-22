@@ -1,1 +1,53 @@
-# sandbox
+# policy_data_ai sandbox
+
+This repo now contains an MVP implementation of a Jupyter-oriented policy data toolkit.
+
+## What is included
+
+- `policy_data_ai/`
+  - `connectors/`: unified fetch interface with provider adapters
+  - `registry/`: source metadata loader + schema checks
+  - `cache/`: sqlite cache keyed by source/query
+  - `utils/`: provenance attachment and logging
+  - `rag/`: docs ingest, index, retrieve pipeline
+  - `tools/`: stable AI-callable tool functions
+- `sources_registry/*.yaml`
+  - one file per requested source (JSON-formatted YAML)
+- `notebooks/`
+  - `00_setup.ipynb`
+  - `01_discover_datasets.ipynb`
+  - `02_fetch_and_join.ipynb`
+  - `03_explain_variables.ipynb`
+- `tests/`
+  - registry, connector, and tool wrapper tests
+
+## Quick start
+
+```bash
+pip install -e .
+python -m unittest discover -s tests
+```
+
+Inside notebooks:
+
+```python
+from policy_data_ai.tools.api import PolicyDataRuntime
+
+runtime = PolicyDataRuntime(registry_dir="../sources_registry")
+runtime.tool_search_datasets("unemployment")
+```
+
+## Tool functions
+
+- `tool_list_sources()`
+- `tool_search_datasets(query)`
+- `tool_list_variables(source, dataset_id)`
+- `tool_explain_variable(source, dataset_id, var_code)`
+- `tool_fetch_data(source, dataset_id, filters, start, end)`
+- `tool_show_provenance(data_obj)`
+
+## Notes
+
+- `WorldBank`, `OWID`, and `Eurostat` have concrete connector logic for fetch.
+- Other sources are registered and discoverable; they use generic connector behavior and can be expanded with provider-specific adapters.
+- Provenance is attached to pandas outputs via `DataFrame.attrs["policy_data_ai_provenance"]` and returned explicitly in tool responses.

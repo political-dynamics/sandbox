@@ -1,0 +1,42 @@
+{
+  "source_id": "un_data",
+  "name": "UN SDG API",
+  "description": "UN statistics endpoints for SDG data.",
+  "api_type": "rest",
+  "base_url": "https://unstats.un.org/SDGAPI/v1/sdg",
+  "rate_limit_per_second": 2,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://unstats.un.org/SDGAPI/swagger/"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "indicator-list",
+      "name": "SDG Indicators List",
+      "description": "Indicator catalog and metadata for SDG APIs.",
+      "api_type": "rest",
+      "endpoint": "/Indicator/List",
+      "dimensions": [],
+      "variables": [
+        {
+          "var_code": "indicator",
+          "label": "Indicator metadata",
+          "unit": "",
+          "definition": "Metadata describing SDG indicators.",
+          "doc_url": "https://unstats.un.org/SDGAPI/swagger/"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "List SDG indicators",
+          "filters": {},
+          "start": null,
+          "end": null
+        }
+      ]
+    }
+  ]
+}
+

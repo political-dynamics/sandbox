@@ -1,0 +1,47 @@
+{
+  "source_id": "fred",
+  "name": "FRED API",
+  "description": "Federal Reserve Economic Data REST API (API key required).",
+  "api_type": "rest",
+  "base_url": "https://api.stlouisfed.org/fred",
+  "rate_limit_per_second": 3,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://fred.stlouisfed.org/docs/api/fred/"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "UNRATE",
+      "name": "Civilian Unemployment Rate",
+      "description": "US unemployment rate, percent, monthly.",
+      "api_type": "rest",
+      "endpoint": "/series/observations",
+      "dimensions": [
+        { "name": "series_id", "allowed_codes": ["UNRATE"] },
+        { "name": "time", "notes": "Date" }
+      ],
+      "variables": [
+        {
+          "var_code": "value",
+          "label": "Observation value",
+          "unit": "Percent",
+          "definition": "Observation value returned by FRED.",
+          "doc_url": "https://fred.stlouisfed.org/series/UNRATE"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "UNRATE 2010-2024",
+          "filters": {
+            "series_id": "UNRATE"
+          },
+          "start": "2010-01-01",
+          "end": "2024-12-31"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,47 @@
+{
+  "source_id": "migration_portal",
+  "name": "Migration Data Portal",
+  "description": "Migration Data Portal metadata/source entry.",
+  "api_type": "csv",
+  "base_url": "https://www.migrationdataportal.org",
+  "rate_limit_per_second": 1,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://www.migrationdataportal.org/themes/international-migrant-stocks"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "international-migrant-stock",
+      "name": "International migrant stock",
+      "description": "Stock of international migrants by destination.",
+      "api_type": "csv",
+      "csv_url": "https://www.migrationdataportal.org/sites/g/files/tmzbdl251/files/data_downloads/migrant_stock.csv",
+      "dimensions": [
+        { "name": "country" },
+        { "name": "year" }
+      ],
+      "variables": [
+        {
+          "var_code": "value",
+          "label": "Migrant stock",
+          "unit": "people",
+          "definition": "Estimated stock of international migrants.",
+          "doc_url": "https://www.migrationdataportal.org/themes/international-migrant-stocks"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "Migrant stock for DE/FR 2010-2024",
+          "filters": {
+            "country": ["Germany", "France"]
+          },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    }
+  ]
+}
+

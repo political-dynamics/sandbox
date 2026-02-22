@@ -1,0 +1,88 @@
+{
+  "source_id": "worldbank",
+  "name": "World Bank Data API v2",
+  "description": "World Development Indicators and related indicators via REST API.",
+  "api_type": "rest",
+  "base_url": "https://api.worldbank.org",
+  "rate_limit_per_second": 5,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "SL.UEM.TOTL.ZS",
+      "name": "Unemployment, total (% of total labor force)",
+      "description": "Share of labor force that is without work but available and seeking employment.",
+      "api_type": "rest",
+      "endpoint": "/v2/country/{countries}/indicator/{dataset_id}",
+      "dimensions": [
+        {
+          "name": "country",
+          "codes_url": "https://api.worldbank.org/v2/country?format=json&per_page=400"
+        },
+        {
+          "name": "time",
+          "notes": "Year"
+        }
+      ],
+      "variables": [
+        {
+          "var_code": "value",
+          "label": "Unemployment rate",
+          "unit": "% of total labor force",
+          "definition": "Unemployment refers to the share of the labor force that is without work but available for and seeking employment.",
+          "doc_url": "https://api.worldbank.org/v2/indicator/SL.UEM.TOTL.ZS?format=json",
+          "notes": "Derived from ILO modeled estimates."
+        }
+      ],
+      "docs": [
+        {
+          "kind": "dataset",
+          "url": "https://api.worldbank.org/v2/indicator/SL.UEM.TOTL.ZS?format=json"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "Germany and France unemployment 2010-2024",
+          "filters": {
+            "country": ["DE", "FR"]
+          },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    },
+    {
+      "dataset_id": "NY.GDP.MKTP.CD",
+      "name": "GDP (current US$)",
+      "description": "Gross domestic product in current US dollars.",
+      "api_type": "rest",
+      "endpoint": "/v2/country/{countries}/indicator/{dataset_id}",
+      "dimensions": [
+        { "name": "country" },
+        { "name": "time" }
+      ],
+      "variables": [
+        {
+          "var_code": "value",
+          "label": "GDP",
+          "unit": "current US$",
+          "definition": "Gross domestic product converted to current U.S. dollars.",
+          "doc_url": "https://api.worldbank.org/v2/indicator/NY.GDP.MKTP.CD?format=json"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "GDP for DE and FR 2010-2024",
+          "filters": { "country": ["DE", "FR"] },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,83 @@
+{
+  "source_id": "owid",
+  "name": "Our World in Data Grapher",
+  "description": "OWID grapher CSV datasets.",
+  "api_type": "csv",
+  "base_url": "https://ourworldindata.org/grapher",
+  "rate_limit_per_second": 2,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://docs.owid.io/projects/etl/api/chart-api/"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "unemployment-rate",
+      "name": "Unemployment Rate",
+      "description": "Estimated unemployment rate from OWID grapher.",
+      "api_type": "csv",
+      "csv_url": "https://ourworldindata.org/grapher/unemployment-rate.csv",
+      "dimensions": [
+        { "name": "entity", "notes": "Country or entity name in `Entity` column." },
+        { "name": "time", "notes": "Year in `Year` column." }
+      ],
+      "variables": [
+        {
+          "var_code": "unemployment-rate",
+          "label": "Unemployment rate",
+          "unit": "% of labor force",
+          "definition": "Unemployment as a percentage of labor force.",
+          "doc_url": "https://ourworldindata.org/grapher/unemployment-rate"
+        }
+      ],
+      "docs": [
+        {
+          "kind": "dataset",
+          "url": "https://ourworldindata.org/grapher/unemployment-rate"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "Unemployment for Germany and France 2010-2024",
+          "filters": {
+            "Entity": ["Germany", "France"]
+          },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    },
+    {
+      "dataset_id": "population",
+      "name": "Population",
+      "description": "Total population from OWID grapher.",
+      "api_type": "csv",
+      "csv_url": "https://ourworldindata.org/grapher/population.csv",
+      "dimensions": [
+        { "name": "entity" },
+        { "name": "time" }
+      ],
+      "variables": [
+        {
+          "var_code": "population",
+          "label": "Population",
+          "unit": "people",
+          "definition": "Total population estimates.",
+          "doc_url": "https://ourworldindata.org/grapher/population"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "Population DE and FR 2010-2024",
+          "filters": {
+            "Entity": ["Germany", "France"]
+          },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,48 @@
+{
+  "source_id": "un_migration",
+  "name": "UNHCR Population API",
+  "description": "UNHCR REST API for refugee and migration population statistics.",
+  "api_type": "rest",
+  "base_url": "https://api.unhcr.org/population/v1",
+  "rate_limit_per_second": 2,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://api.unhcr.org/docs/refugee-statistics.html"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "population",
+      "name": "Population under UNHCR mandate",
+      "description": "Population counts by origin/asylum and year.",
+      "api_type": "rest",
+      "endpoint": "/population",
+      "dimensions": [
+        { "name": "coo", "notes": "Country of origin" },
+        { "name": "coa", "notes": "Country of asylum" },
+        { "name": "year" }
+      ],
+      "variables": [
+        {
+          "var_code": "value",
+          "label": "Population count",
+          "unit": "people",
+          "definition": "Persons of concern under UNHCR mandate.",
+          "doc_url": "https://api.unhcr.org/docs/refugee-statistics.html"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "Population by asylum country 2010-2024",
+          "filters": {
+            "coa": ["DEU", "FRA"]
+          },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    }
+  ]
+}
+

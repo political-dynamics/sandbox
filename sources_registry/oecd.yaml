@@ -1,0 +1,48 @@
+{
+  "source_id": "oecd",
+  "name": "OECD SDMX API",
+  "description": "OECD public SDMX REST endpoint.",
+  "api_type": "sdmx",
+  "base_url": "https://sdmx.oecd.org/public/rest/data",
+  "rate_limit_per_second": 4,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://www.oecd.org/en/data/insights/data-explainers/2024/09/api.html"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "PRICES_CPI",
+      "name": "Consumer Price Index",
+      "description": "OECD CPI indices dataset.",
+      "api_type": "sdmx",
+      "endpoint": "/{dataset_id}",
+      "dimensions": [
+        { "name": "LOCATION", "notes": "Country code" },
+        { "name": "SUBJECT", "notes": "Subject code" },
+        { "name": "TIME_PERIOD", "notes": "Date or period" }
+      ],
+      "variables": [
+        {
+          "var_code": "OBS_VALUE",
+          "label": "Observed value",
+          "unit": "Index",
+          "definition": "Published OECD observation value.",
+          "doc_url": "https://stats.oecd.org/"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "CPI for DEU and FRA",
+          "filters": {
+            "LOCATION": ["DEU", "FRA"]
+          },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    }
+  ]
+}
+

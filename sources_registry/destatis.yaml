@@ -1,0 +1,47 @@
+{
+  "source_id": "destatis",
+  "name": "Destatis GENESIS-Online",
+  "description": "German Federal Statistical Office GENESIS API registry entry.",
+  "api_type": "rest",
+  "base_url": "https://www-genesis.destatis.de/genesisWS/rest/2020",
+  "rate_limit_per_second": 1,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://www-genesis.destatis.de/genesisWS/documentation"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "12411-0005",
+      "name": "Unemployment rate in Germany",
+      "description": "Destatis table for unemployment-related indicators.",
+      "api_type": "rest",
+      "endpoint": "/data/table",
+      "dimensions": [
+        { "name": "name", "allowed_codes": ["12411-0005"] },
+        { "name": "time", "notes": "Period dimension depending on table schema" }
+      ],
+      "variables": [
+        {
+          "var_code": "value",
+          "label": "Table value",
+          "unit": "source-defined",
+          "definition": "Observation value from GENESIS table output.",
+          "doc_url": "https://www-genesis.destatis.de/genesisWS/documentation"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "Fetch table metadata",
+          "filters": {
+            "name": "12411-0005"
+          },
+          "start": null,
+          "end": null
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,64 @@
+{
+  "source_id": "eurostat",
+  "name": "Eurostat Dissemination API",
+  "description": "Eurostat statistics API for SDMX/JSON-stat datasets.",
+  "api_type": "sdmx",
+  "base_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data",
+  "rate_limit_per_second": 4,
+  "docs": [
+    {
+      "kind": "api",
+      "url": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access"
+    }
+  ],
+  "datasets": [
+    {
+      "dataset_id": "une_rt_a",
+      "name": "Unemployment rates by sex, age and citizenship (%) - annual data",
+      "description": "Annual unemployment rates published by Eurostat.",
+      "api_type": "sdmx",
+      "endpoint": "/{dataset_id}",
+      "dimensions": [
+        { "name": "freq", "allowed_codes": ["A"] },
+        { "name": "unit", "allowed_codes": ["PC_ACT"] },
+        { "name": "s_adj", "allowed_codes": ["SA", "NSA"] },
+        { "name": "age", "allowed_codes": ["Y15-74"] },
+        { "name": "sex", "allowed_codes": ["T", "M", "F"] },
+        { "name": "geo", "codes_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_a?geo=DE&format=JSON" },
+        { "name": "time", "notes": "Year" }
+      ],
+      "variables": [
+        {
+          "var_code": "value",
+          "label": "Unemployment rate",
+          "unit": "Percent of active population",
+          "definition": "Unemployed persons as a percentage of the labour force.",
+          "doc_url": "https://ec.europa.eu/eurostat/cache/metadata/en/une_esms.htm",
+          "notes": "Seasonal adjustment and demographic dimensions vary by query."
+        }
+      ],
+      "docs": [
+        {
+          "kind": "metadata",
+          "url": "https://ec.europa.eu/eurostat/cache/metadata/en/une_esms.htm"
+        }
+      ],
+      "example_queries": [
+        {
+          "description": "DE/FR unemployment 2010-2024",
+          "filters": {
+            "freq": "A",
+            "unit": "PC_ACT",
+            "s_adj": "SA",
+            "age": "Y15-74",
+            "sex": "T",
+            "geo": ["DE", "FR"]
+          },
+          "start": "2010",
+          "end": "2024"
+        }
+      ]
+    }
+  ]
+}
+
