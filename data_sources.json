@@ -1,0 +1,18 @@
+{
+  "demographic": {
+    "dependency_ratio": "Eurostat demo_pjanind",
+    "fertility": "Eurostat demo_find",
+    "population_projection": "Destatis 14. koordinierte Bev\u00f6lkerungsvorausberechnung",
+    "migration": "Eurostat demo_gind"
+  },
+  "innovation": {
+    "patents": "Eurostat pat_ep_ntot / EPO statistics",
+    "rd_spending": "OECD MSTI database",
+    "startup_data": "German Startup Monitor 2023"
+  },
+  "labor_market": {
+    "employment": "Eurostat LFS",
+    "wages": "Eurostat SES / Destatis",
+    "occupations": "IAB / Eurostat"
+  }
+}
