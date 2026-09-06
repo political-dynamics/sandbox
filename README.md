@@ -51,3 +51,8 @@ runtime.tool_search_datasets("unemployment")
 - `WorldBank`, `OWID`, and `Eurostat` have concrete connector logic for fetch.
 - Other sources are registered and discoverable; they use generic connector behavior and can be expanded with provider-specific adapters.
 - Provenance is attached to pandas outputs via `DataFrame.attrs["policy_data_ai_provenance"]` and returned explicitly in tool responses.
+
+## German economy dashboard model
+
+See [economy/README.md](economy/README.md) for Eurostat snapshots, sector VAR
+estimation, holdout diagnostics, and the companion Economy Lab dashboard.
